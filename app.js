@@ -67,7 +67,7 @@ function setMusic(index) {
   setInterval(() => {
     musicRange.max = music.duration;
     currentTime.innerHTML = formatTime(music.currentTime);
-  }, 1000);
+  }, 300);
 }
 
 setMusic(musicIndex);
@@ -100,3 +100,15 @@ function playHandler({ currentTarget }) {
 mainBtns.forEach((e) => {
   e.addEventListener("click", playHandler);
 });
+
+// -=-=-=-=-=-=-=-=-=-=-=-=
+
+setInterval(() => {
+  musicRange.value = music.currentTime
+}, 500)
+
+musicRange.addEventListener("change", () => {
+  music.currentTime = musicRange.value
+})
+
+// -=-=-=-=-=-=-=-=-=-=-=-=
