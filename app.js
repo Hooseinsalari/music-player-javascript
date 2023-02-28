@@ -55,4 +55,33 @@ const musicList = [
 
 let musicIndex = 0;
 
+function setMusic(index) {
+  let song = musicList[index];
+  music.setAttribute("src", `./music/${song.url}.mp3`);
+  cover.setAttribute("src", song.coverUrl);
+  artistName.innerHTML = song.artist;
+  songName.innerHTML = song.song;
+  time.innerHTML = formatTime(song.musicTime);
+  musicRange.value = 0
+
+  setInterval(() => {
+    musicRange.max = music.duration;
+    currentTime.innerHTML = formatTime(music.currentTime);
+  }, 1000);
+}
+
+setMusic(musicIndex);
+
+function formatTime(t) {
+  let minutes = Math.floor(t / 60);
+  let seconds = Math.floor(t - minutes * 60);
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  return minutes + ":" + seconds;
+}
+
 
