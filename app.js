@@ -85,3 +85,18 @@ function formatTime(t) {
 }
 
 
+function playHandler({ currentTarget }) {
+  if (currentTarget.dataset.status === "play") {
+    music.play();
+    currentTarget.style.display = "none";
+    stopBtn.style.display = "block";
+  } else {
+    music.pause();
+    currentTarget.style.display = "none";
+    startBtn.style.display = "block";
+  }
+}
+
+mainBtns.forEach((e) => {
+  e.addEventListener("click", playHandler);
+});
