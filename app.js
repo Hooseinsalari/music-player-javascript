@@ -62,7 +62,7 @@ function setMusic(index) {
   artistName.innerHTML = song.artist;
   songName.innerHTML = song.song;
   time.innerHTML = formatTime(song.musicTime);
-  musicRange.value = 0
+  musicRange.value = 0;
 
   setInterval(() => {
     musicRange.max = music.duration;
@@ -84,7 +84,6 @@ function formatTime(t) {
   return minutes + ":" + seconds;
 }
 
-
 function playHandler({ currentTarget }) {
   if (currentTarget.dataset.status === "play") {
     music.play();
@@ -104,11 +103,37 @@ mainBtns.forEach((e) => {
 // -=-=-=-=-=-=-=-=-=-=-=-=
 
 setInterval(() => {
-  musicRange.value = music.currentTime
-}, 500)
+  musicRange.value = music.currentTime;
+}, 500);
 
 musicRange.addEventListener("change", () => {
-  music.currentTime = musicRange.value
-})
+  music.currentTime = musicRange.value;
+});
 
 // -=-=-=-=-=-=-=-=-=-=-=-=
+function nextMusicHandler() {
+  musicIndex += 1;
+  if (musicIndex === musicList.length) {
+    musicIndex = 0;
+  }
+  setMusic(musicIndex);
+  if (startBtn.style.display === "none") {
+    music.play();
+    stopBtn.style.display === "block";
+  }
+}
+
+function prevMusicHandler() {
+  musicIndex -= 1;
+  if (musicIndex === -1) {
+    musicIndex = musicList.length - 1;
+  }
+  setMusic(musicIndex);
+  if (startBtn.style.display === "none") {
+    music.play();
+    stopBtn.style.display === "block";
+  }
+}
+
+nextBtn.addEventListener("click", nextMusicHandler);
+prevBtn.addEventListener("click", prevMusicHandler);
