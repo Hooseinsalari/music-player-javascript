@@ -10,22 +10,24 @@
   </head>
   <body>
     <div class="container">
+        <audio id="audio" src=""></audio>
       <div class="muisc-img">
         <img
-          src="https://img.freepik.com/free-photo/sound-music-perforated-paer-musical-note_53876-31035.jpg?w=740&t=st=1677420914~exp=1677421514~hmac=af8891e763becef7384e7bd301066022d2b56cec14e9f1bd749c55aaa9ca4b1e"
-          alt=""
+          src=""
+          alt="cover"
+          id="cover"
         />
       </div>
 
       <div class="music-details">
-        <h4 class="music-singer">Songer name</h4>
-        <h4 class="music-name">Song name</h4>
+        <h4 class="music-singer"></h4>
+        <h4 class="music-name"></h4>
       </div>
 
       <div class="music-time">
         <div class="time">
           <span class="time-duration">00:00</span>
-          <span class="time-finish">06:52</span>
+          <span class="time-finish"></span>
         </div>
 
         <input class="music-range" type="range" value="0" />
@@ -50,7 +52,7 @@
         </button>
 
         <div class="main-btns">
-          <button class="start-btn">
+          <button class="btn start-btn" data-status="play">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -66,7 +68,7 @@
               />
             </svg>
           </button>
-          <button style="display: none" class="stop-btn">
+          <button style="display: none" class="btn stop-btn" data-status="pause">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
