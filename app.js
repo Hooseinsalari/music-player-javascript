@@ -1,6 +1,7 @@
 let $ = document;
 
 const music = $.querySelector("#audio");
+const body = $.querySelector("body")
 
 const cover = $.querySelector("#cover");
 const artistName = $.querySelector(".music-singer");
@@ -68,6 +69,8 @@ function setMusic(index) {
     musicRange.max = music.duration;
     currentTime.innerHTML = formatTime(music.currentTime);
   }, 300);
+
+  body.style.backgroundImage = `url(${song.coverUrl})`
 }
 
 setMusic(musicIndex);
